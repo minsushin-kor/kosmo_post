@@ -25,5 +25,23 @@ class QnaMapperTest {
 		assertNotEquals(0, ar);
 		log.info("ar" + ar);
 	}
+	
+	@Test
+	void testCreate() throws Exception{
+		for(int i=0;i<23;i++) {
+			QnaDTO qnaDTO = new QnaDTO();
+			qnaDTO.setBoardTitle("QNA Title" + i);
+			qnaDTO.setBoardWriter("QNA Writer" + i);
+			qnaDTO.setBoardContents("QNA Contents" + i);
+			
+			qnaMapper.create(qnaDTO);
+			
+			if(i%3==0) {
+				Thread.sleep(500);
+			}
+		}
+		
+		System.out.println("finish");
+	}
 
 }
