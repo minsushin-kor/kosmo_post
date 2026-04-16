@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- mapper.java의 풀 패키지명 + 클래스명 -->
+<mapper namespace="com.winter.app.board.notice.NoticeMapper">
+	
+	<!-- ID는 mapper.java의 메서드명 -->
+	<!-- resulttype에 풀패키지 명을 적어줘야 하지만, properties에 앞부분을 작성하여 전체가 아닌 클래스명만 작성 -->
+	<select id="list" resultType="NoticeDTO">
+		SELECT * FROM "TB_NOTICE"
+	</select>
+	
+</mapper>
