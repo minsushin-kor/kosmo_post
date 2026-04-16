@@ -25,5 +25,23 @@ class NoticeMapperTest {
 		assertNotEquals(0, ar);
 		log.info("ar" + ar);
 	}
+	
+	@Test
+	void testCreate() throws Exception{
+		
+		for(int i=0;i<23;i++)
+		{
+			NoticeDTO noticeDTO = new NoticeDTO();
+			noticeDTO.setBoardTitle("Notice Title" + i);
+			noticeDTO.setBoardWriter("Notice Writer" + i);
+			noticeDTO.setBoardContents("Notice Contents" + i);
+			noticeMapper.create(noticeDTO);
+			
+			if(i%3==0) {
+				Thread.sleep(500);
+			}
+		}
+		System.out.println("finish");
+	}
 
 }
