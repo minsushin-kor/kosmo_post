@@ -23,9 +23,10 @@ class NoticeMapperTest {
 	@Test
 	void testList() throws Exception {
 		Pager pager = new Pager();
-		pager.setPage(2L);
+		pager.setSearch("9");
+		pager.setPage(1L);
 		pager.makeStartNum();
-		
+				
 		List<BoardDTO> ar = noticeMapper.list(pager);
 		assertEquals(5, ar.size());
 		log.info("{}" + ar);
