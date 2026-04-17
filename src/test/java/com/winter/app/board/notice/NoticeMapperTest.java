@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.winter.app.board.BoardDTO;
+import com.winter.app.pager.Pager;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,27 +22,31 @@ class NoticeMapperTest {
 	
 	@Test
 	void testList() throws Exception {
-		List<BoardDTO> ar = noticeMapper.list();
-		assertNotEquals(0, ar);
-		log.info("ar" + ar);
+		Pager pager = new Pager();
+		pager.setPage(2L);
+		pager.makeStartNum();
+		
+		List<BoardDTO> ar = noticeMapper.list(pager);
+		assertEquals(5, ar.size());
+		log.info("{}" + ar);
 	}
 	
-	@Test
-	void testCreate() throws Exception{
-		
-		for(int i=0;i<23;i++)
-		{
-			NoticeDTO noticeDTO = new NoticeDTO();
-			noticeDTO.setBoardTitle("Notice Title" + i);
-			noticeDTO.setBoardWriter("Notice Writer" + i);
-			noticeDTO.setBoardContents("Notice Contents" + i);
-			noticeMapper.create(noticeDTO);
-			
-			if(i%3==0) {
-				Thread.sleep(500);
-			}
-		}
-		System.out.println("finish");
-	}
+//	@Test
+//	void testCreate() throws Exception{
+//		
+//		for(int i=0;i<23;i++)
+//		{
+//			NoticeDTO noticeDTO = new NoticeDTO();
+//			noticeDTO.setBoardTitle("Notice Title" + i);
+//			noticeDTO.setBoardWriter("Notice Writer" + i);
+//			noticeDTO.setBoardContents("Notice Contents" + i);
+//			noticeMapper.create(noticeDTO);
+//			
+//			if(i%3==0) {
+//				Thread.sleep(500);
+//			}
+//		}
+//		System.out.println("finish");
+//	}
 
 }

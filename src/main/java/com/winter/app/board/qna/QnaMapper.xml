@@ -6,9 +6,10 @@
   
 <mapper namespace="com.winter.app.board.qna.QnaMapper">
 	
-	<select id="list" resultType="QnaDTO">
-		SELECT * FROM "TB_QNA"
-	</select> 
+	<select id="list" resultType="QnaDTO" parameterType="Pager">
+		SELECT * FROM "TB_NOTICE"
+		ORDER BY "BOARD_NUM" DESC LIMIT #{perPage} OFFSET #{startNum}
+	</select>
 	
 	<insert id="create" parameterType="QnaDTO">
 		INSERT INTO "TB_QNA"

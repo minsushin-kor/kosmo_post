@@ -9,8 +9,9 @@
 	
 	<!-- ID는 mapper.java의 메서드명 -->
 	<!-- resulttype에 풀패키지 명을 적어줘야 하지만, properties에 앞부분을 작성하여 전체가 아닌 클래스명만 작성 -->
-	<select id="list" resultType="NoticeDTO">
+	<select id="list" resultType="NoticeDTO" parameterType="Pager">
 		SELECT * FROM "TB_NOTICE"
+		ORDER BY "BOARD_NUM" DESC LIMIT #{perPage} OFFSET #{startNum}
 	</select>
 	
 	<insert id="create" parameterType="NoticeDTO">
