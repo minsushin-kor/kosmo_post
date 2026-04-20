@@ -32,7 +32,7 @@
 					<div class=col-6>
 						<form action="./join" method="post" enctype="multipart/form-data">
 							<div class="form-group">
-								<label for="title">Username</label> 
+								<label for="username">Username</label> 
 								<input type="text" name="username" class="form-control" id="username"> 
 							</div>
 							
