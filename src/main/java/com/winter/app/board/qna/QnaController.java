@@ -42,5 +42,12 @@ public class QnaController {
 		int result = qnaService.create(qnaDTO, attach);
 		return "redirect:./list";
 	}
+	
+	@GetMapping("detail")
+	public String detail(BoardDTO boardDTO, Model model) throws Exception{
+		boardDTO = qnaService.detail(boardDTO);
+		model.addAttribute("dto", boardDTO);
+		return "board/detail";
+	}
 
 }

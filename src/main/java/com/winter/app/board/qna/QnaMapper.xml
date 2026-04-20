@@ -26,6 +26,28 @@
 		<include refid="search_sql"></include>
 		ORDER BY "BOARD_NUM" DESC LIMIT #{perPage} OFFSET #{startNum}
 	</select>
+	
+	<select id="detail" resultType="QnaDTO" resultMap="qnaDetail">
+		SELECT * FROM "TB_QNA" Q
+			LEFT JOIN
+			"TB_QNAFILE" F
+			USING ("BOARD_NUM")
+			WHERE "BOARD_NUM" = #{boardNum}	
+	</select>
+	
+	<resultMap type="QnaDTO" id="qnaDetail">
+		<id column="BOARD_NUM" property="boardNum"/>
+		<result column="BOARD_TITLE" property="boardTitle"/>
+		<result column="BOARD_WRITER" property="boardWriter"/>
+		<result column="BOARD_CONTENTS" property="boardContents"/>
+		<result column="BOARD_DATE" property="boardDate"/>
+		<result column="BOARD_HIT" property="boardHit"/>
+		<collection property="list" javaType="java.util.List" ofType="FileDTO">
+			<id column="FILE_NUM" property="fileNum"/>
+			<result column="FILE_NAME" property="fileName"/>
+			<result column="ORI_NAME" property="oriName"/>
+		</collection>
+	</resultMap>
 		
 	<insert id="create" parameterType="QnaDTO" useGeneratedKeys="true" keyProperty="boardNum">
 		INSERT INTO "TB_QNA"
