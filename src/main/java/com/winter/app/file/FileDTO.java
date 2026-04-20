@@ -6,7 +6,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class FileDTO {
-	private String fileNum;
+	private Long fileNum;
 	private String fileName;
 	private String oriName;
 }

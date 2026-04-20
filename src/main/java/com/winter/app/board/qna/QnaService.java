@@ -1,5 +1,6 @@
 package com.winter.app.board.qna;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.winter.app.board.BoardDTO;
 import com.winter.app.board.BoardService;
 import com.winter.app.board.notice.NoticeFileDTO;
+import com.winter.app.file.FileDTO;
 import com.winter.app.file.FileManager;
 import com.winter.app.pager.Pager;
 
@@ -22,7 +24,7 @@ public class QnaService implements BoardService{
 	@Autowired
 	private FileManager fileManager;
 	
-	@Value("${app.upload.qna}")
+	@Value("${app.board.qna}")
 	private String name;
 
 	@Override
@@ -65,15 +67,27 @@ public class QnaService implements BoardService{
 	}
 
 	@Override
-	public int update(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public int update(BoardDTO boardDTO, MultipartFile [] attach) throws Exception {
+		int result = qnaMapper.update(boardDTO);
+		
+		return result;
 	}
 
 	@Override
 	public int delete(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		boardDTO = qnaMapper.detail(boardDTO);
+		
+		//HDD에서 파일 삭제
+		for(FileDTO fileDTO:boardDTO.getList()) {
+			fileManager.fileDelete(name, fileDTO);
+			//qnaMapper.fileDelete(fileDTO);
+		}
+		
+		qnaMapper.fileDeleteFor(boardDTO.getList());
+		
+		//DB에서 삭제
+		int result = qnaMapper.delete(boardDTO);
+		return result;
 	}
 	
 	

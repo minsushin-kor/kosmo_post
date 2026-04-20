@@ -72,4 +72,17 @@
 		)
 	</insert>
 	
+	<update id="update" parameterType="NoticeDTO">
+		UPDATE "TB_NOTICE"
+		SET 
+			"BOARD_TITLE" = #{boardTitle},
+			"BOARD_CONTENTS"= #{boardContents}
+		WHERE "BOARD_NUM" = #{boardNum}
+		
+	</update>
+	
+	<delete id="delete" parameterType="NoticeDTO">
+		DELETE FROM "TB_NOTICE"
+		WHERE "BOARD_NUM" = #{boardNum};
+	</delete>
 </mapper>
