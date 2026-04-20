@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/member/*")
 public class MemberController {
@@ -24,6 +26,19 @@ public class MemberController {
 		
 		return "redirect:/";
 		
+	}
+	
+	@GetMapping("login")
+	public void login() throws Exception{}
+	
+	@PostMapping("login")
+	public String login(MemberDTO memberDTO, HttpSession session) throws Exception{
+		memberDTO = memberService.detail(memberDTO);
+		if(memberDTO != null) {
+			session.setAttribute("member", memberDTO);
+		}
+		
+		return "redirect:/";
 	}
 	
 }
