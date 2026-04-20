@@ -26,6 +26,7 @@ public class MemberServiceImpl implements MemberService{
 		int result = memberMapper.join(memberDTO);
 		
 		//프로필 이미지를 하드디스크에 저장
+		// 폴더(바구니) 자체가 존재하는가? && 그 폴더 안에 진짜 파일(데이터)이 들어있는가? 
 		if(file != null && !file.isEmpty()) {
 			String fileName = fileManager.fileSave(name, file);
 		
