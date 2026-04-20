@@ -14,7 +14,7 @@
 	</insert>
 	
 	<insert id="addProfile" parameterType="ProfileDTO">
-		INSERT INTO "TB_PROFILE" (FILE_NAME, ORI_NAME, USERNAME)
+		INSERT INTO "TB_PROFILE" ("FILE_NAME", "ORI_NAME", "USERNAME")
 		VALUES(
 		#{fileName}, #{oriName}, #{username}  
 		)
