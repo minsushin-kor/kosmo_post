@@ -33,6 +33,7 @@
                     <c:if test="${empty member}">
                     	<h3> 비로그인 상태 </h3>
 					</c:if>
+										
                 </div>
                 <!-- End Page container-fluid -->
 		 	 </div>
