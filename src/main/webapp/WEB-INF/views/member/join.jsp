@@ -34,34 +34,44 @@
 							<div class="form-group">
 								<label for="username">Username</label> 
 								<input type="text" name="username" class="form-control" id="username"> 
+								<span id="username_result"></span>
 							</div>
 							
 							<div class="form-group">
 								<label for="password">Password</label> 
 								<input type="password" name="password" class="form-control" id="password"> 
+								<span id="password_result"></span>
+							</div>
+
+							<div class="form-group">
+								<label for="passwordCheck">Password Check</label> 
+								<input type="password" name="password" class="form-control" id="passwordCheck"> 
+								<span id="check_result"></span>
 							</div>
 							
 							<div class="form-group">
 								<label for="name">Name</label>
-								<input type="text" name="name" class="form-control" id="name">  
+								<input type="text" name="name" class="form-control personalCheck" id="name">  
 							</div>
 							
 							
 							<div class="form-group">
 								<label for="phone">Phone</label>
-								<input type="tel" name="phone" class="form-control" id="phone">  
+								<input type="tel" name="phone" class="form-control personalCheck" id="phone">  
 							</div>
 							
 							
 							<div class="form-group">
 								<label for="email">Email</label>
-								<input type="email" name="email" class="form-control" id="email">  
+								<input type="email" name="email" class="form-control personalCheck" id="email"> 
+								<span id="emptyPersonal"></span> 
 							</div>
 							
 							
 							<div class="form-group">
 								<label for="birth">Birth</label>
-								<input type="date" name="birth" class="form-control" id="birth">  
+								<input type="date" name="birth" class="form-control" id="birth"> 
+								<span id="checkBirth"></span> 
 							</div>
 							
 							<div class="form-group">
@@ -69,7 +79,7 @@
 								<input type="file" name="attach" class="form-control">
 							</div>
 							
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button id="btn1" type="button" class="btn btn-primary">Submit</button>
 						</form>
 					</div>
 				</div>
@@ -92,5 +102,6 @@
         		height: 100
       			});
     </script>
+	<script src="/js/member/join.js"></script>
 </body>
 </html>

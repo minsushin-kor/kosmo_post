@@ -1,5 +1,7 @@
 package com.winter.app.member;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -54,5 +56,11 @@ public class MemberServiceImpl implements MemberService{
 		}
 		
 		return null;
+	}
+	
+	@Override
+	public MemberDTO idCheck(MemberDTO memberDTO) throws Exception{
+		return memberMapper.detail(memberDTO);
+		
 	}
 }

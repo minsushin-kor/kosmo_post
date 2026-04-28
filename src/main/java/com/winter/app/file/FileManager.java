@@ -25,7 +25,7 @@ public class FileManager {
 		// 1. 어디에 저장?
 		File file = new File(path, name);
 		if(!file.exists()) {
-			//mkdirs > make directorys
+			//mkdirs : make directorys
 			file.mkdirs();
 		}
 		

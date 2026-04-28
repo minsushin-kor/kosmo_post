@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequestMapping("/notice/*")
+@CrossOrigin("*")
 public class NoticeController {
 	
 	@Autowired
@@ -50,23 +52,39 @@ public class NoticeController {
 	}
 	
 	@PostMapping("create")
-	public String create(NoticeDTO noticeDTO, @RequestParam("attach") MultipartFile [] attach) throws Exception{
+	public String create(NoticeDTO noticeDTO, @RequestParam(value="attach", required = false) MultipartFile [] attach, Model model) throws Exception{
 		int result = noticeService.create(noticeDTO, attach);
-		return "redirect:./list";
+		
+		if(result>0) {
+			model.addAttribute("result", "글 등록 성공");
+			model.addAttribute("url", "./list");
+		}
+		
+		return "commons/result";
 	}
 	
 	@GetMapping("detail")
 	public String detail(NoticeDTO noticeDTO, Model model) throws Exception{
 		BoardDTO boardDTO = noticeService.detail(noticeDTO);
-		model.addAttribute("dto", boardDTO);
 		
-		return "board/detail";
+		if(boardDTO == null) {
+			model.addAttribute("notFound", "없는 번호입니다.");
+			model.addAttribute("url", "./list");
+			return "commons/result";
+		}
+		else {
+			
+			model.addAttribute("dto", boardDTO);
+			return "board/detail";
+		}
+		
 	}
 	
 	@GetMapping("update")
 	public String update(NoticeDTO noticeDTO, Model model) throws Exception{
 		BoardDTO boardDTO = noticeService.detail(noticeDTO);
 		model.addAttribute("dto", boardDTO);
+		
 		return "board/update";
 	}
 	

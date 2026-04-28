@@ -1,7 +1,10 @@
 package com.winter.app.member;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,4 +50,18 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("idCheck")
+	public String idCheck(MemberDTO memberDTO, Model model) throws Exception  {
+		memberDTO = memberService.idCheck(memberDTO);
+		int result = 0 ;
+		
+		if(memberDTO == null) {
+			result = 1;
+			// 0이면 중복, 0이 아니면 중복이 아니다. 
+		}
+		model.addAttribute("result", result);
+		System.out.println(result);
+		
+		return "commons/ajax";
+	}
 }

@@ -52,7 +52,7 @@
 								<input type="file" name="attach" class="form-control">
 							</div>
 							
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button id="create" type="submit" class="btn btn-primary">Submit</button>
 						</form>
 					</div>
 				</div>
@@ -75,5 +75,6 @@
         		height: 100
       			});
     </script>
+	<script src="/js/member/form.js"></script>
 </body>
 </html>
