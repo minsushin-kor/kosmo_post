@@ -21,4 +21,9 @@ public class CartService {
 	public List<ProductDTO> list(MemberDTO memberDTO) throws Exception{
 		return cartMapper.list(memberDTO);
 	}
+	
+	public int delete(List<CartDTO> ar) throws Exception{
+		return cartMapper.delete(ar);
+	}
+	
 }

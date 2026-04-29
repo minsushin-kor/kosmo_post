@@ -29,28 +29,14 @@
                     
                     <div class="row">
                     	<div>
-                    		<input type="checkbox">
-                    		<button class="btn btn-primary">선택항목 삭제</button>
+                    		<input type="checkbox" id="all">
+                    		<button class="btn btn-primary" id="selectdel">선택항목 삭제</button>
                     		<button class="btn btn-danger">선택항목 가입</button>
                     	</div>
                     </div>
                     
-                    <div class="row" >
-                    	<c:forEach items="${list}" var="p">
-                    		<div class="col-4">
-	                    		<div class="card">
-	                    			<div class="card-header">
-	                    				<input type="checkbox"> <button class="btn btn-info">삭제</button>
-	                    			</div>
-								  <img src="/files/product/${p.productFileDTO.fileName}" class="card-img-top" alt="...">
-								  <div class="card-body">
-								    <h5 class="card-title">${p.productName}</h5>
-								    
-								    <a href="./detail?productNum=${p.productNum}" class="btn btn-primary">상세보기</a>
-								  </div>
-								</div>
-                    		</div>
-                    	</c:forEach>
+                    <div class="row" id="list">
+                    	
                     </div>
                     
                     
