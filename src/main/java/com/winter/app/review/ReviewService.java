@@ -23,4 +23,9 @@ public class ReviewService {
 	public int delete(ReviewDTO reviewDTO) throws Exception{
 		return reviewMapper.delete(reviewDTO);
 	}
+	
+	public int update(ReviewDTO reviewDTO) throws Exception{
+		return reviewMapper.update(reviewDTO);
+	}
+	
 }

@@ -33,12 +33,12 @@
 						<form action="./login" method="post" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="title">Username</label> 
-								<input type="text" name="username" class="form-control" id="username"> 
+								<input type="text" value="qwerty1" name="username" class="form-control" id="username"> 
 							</div>
 							
 							<div class="form-group">
 								<label for="password">Password</label> 
-								<input type="password" name="password" class="form-control" id="password"> 
+								<input type="password" value="1234" name="password" class="form-control" id="password"> 
 							</div>
 														
 							<button type="submit" class="btn btn-primary">Submit</button>

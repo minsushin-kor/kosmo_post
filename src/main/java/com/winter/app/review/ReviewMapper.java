@@ -13,5 +13,6 @@ public interface ReviewMapper {
 	
 	public int delete(ReviewDTO reviewDTO) throws Exception;
 	
+	public int update(ReviewDTO reviewDTO) throws Exception;
 	
 }
